@@ -89,7 +89,7 @@ import org.springframework.web.server.ResponseStatusException;
 <span class="fc" id="L89">            .studentId(studentId)</span>
 <span class="fc" id="L90">            .firstName(firstName)</span>
 <span class="fc" id="L91">            .lastName(lastName)</span>
-<span class="fc" id="L92">            .email(email)</span>
+<span class="fc" id="L92">            .email(email.strip())</span>
 <span class="fc" id="L93">            .build();</span>
 
 <span class="fc" id="L95">    UpsertResponse upsertResponse = upsertStudent(rosterStudent, course, RosterStatus.MANUAL);</span>
@@ -129,7 +129,7 @@ import org.springframework.web.server.ResponseStatusException;
 
   public static UpsertResponse upsertStudent(
       RosterStudent student, Course course, RosterStatus rosterStatus) {
-<span class="fc" id="L132">    String convertedEmail = CanonicalFormConverter.convertToValidEmail(student.getEmail());</span>
+<span class="fc" id="L132">    String convertedEmail = CanonicalFormConverter.convertToValidEmail(student.getEmail().strip());</span>
 <span class="fc" id="L133">    Optional&lt;RosterStudent&gt; existingStudent =</span>
 <span class="fc" id="L134">        course.getRosterStudents().stream()</span>
 <span class="fc" id="L135">            .filter(</span>
@@ -157,12 +157,12 @@ import org.springframework.web.server.ResponseStatusException;
 <span class="fc" id="L157">      existingStudentObj.setFirstName(student.getFirstName());</span>
 <span class="fc" id="L158">      existingStudentObj.setLastName(student.getLastName());</span>
 <span class="fc" id="L159">      existingStudentObj.setSection(student.getSection());</span>
-<span class="fc" id="L160">      existingStudentObj.setEmail(convertedEmail);</span>
+<span class="fc" id="L160">      existingStudentObj.setEmail(convertedEmail.strip());</span>
 <span class="fc" id="L161">      existingStudentObj.setStudentId(student.getStudentId());</span>
 <span class="fc" id="L162">      return new UpsertResponse(InsertStatus.UPDATED, existingStudentObj);</span>
     } else {
 <span class="fc" id="L164">      student.setCourse(course);</span>
-<span class="fc" id="L165">      student.setEmail(convertedEmail);</span>
+<span class="fc" id="L165">      student.setEmail(convertedEmail.strip());</span>
 <span class="fc" id="L166">      student.setRosterStatus(rosterStatus);</span>
       // if an installationID exists, orgStatus should be set to JOINCOURSE. if it doesn't exist
       // (null), set orgStatus to PENDING.

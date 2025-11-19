@@ -47,7 +47,7 @@ import org.springframework.web.bind.annotation.RestController;
   @PreAuthorize(&quot;hasRole('ROLE_ADMIN')&quot;)
   @PostMapping(&quot;/post&quot;)
   public Admin postAdmin(@Parameter(name = &quot;email&quot;) @RequestParam String email) {
-<span class="fc" id="L50">    String convertedEmail = CanonicalFormConverter.convertToValidEmail(email);</span>
+<span class="fc" id="L50">    String convertedEmail = CanonicalFormConverter.convertToValidEmail(email.strip());</span>
 <span class="fc" id="L51">    Admin admin = new Admin(convertedEmail);</span>
 <span class="fc" id="L52">    Admin savedAdmin = adminRepository.save(admin);</span>
 <span class="fc" id="L53">    return savedAdmin;</span>
@@ -83,7 +83,7 @@ import org.springframework.web.bind.annotation.RestController;
   public Object deleteAdmin(@Parameter(name = &quot;email&quot;) @RequestParam String email) {
 <span class="fc" id="L84">    Admin admin =</span>
         adminRepository
-<span class="fc" id="L86">            .findByEmail(email)</span>
+<span class="fc" id="L86">            .findByEmail(email.strip())</span>
 <span class="fc" id="L87">            .orElseThrow(() -&gt; new EntityNotFoundException(Admin.class, email));</span>
 <span class="fc bfc" id="L88" title="All 2 branches covered.">    if (adminEmails.contains(email)) {</span>
 <span class="fc" id="L89">      throw new UnsupportedOperationException(</span>
