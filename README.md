@@ -171,5 +171,7 @@ mvn pitest:mutationCoverage -DtargetClasses=edu.ucsb.cs156.frontiers.controllers
 To run full mutation test coverage, as usual, use:
 
 ```
+
+# testing npm test
 mvn pitest:mutationCoverage
 ```
