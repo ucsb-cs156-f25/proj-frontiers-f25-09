@@ -150,7 +150,7 @@ import org.springframework.web.server.ResponseStatusException;
 <span class="fc" id="L150">        existingStudentObj.setRosterStatus(rosterStatus);</span>
 <span class="fc" id="L151">        existingStudentObj.setFirstName(student.getFirstName());</span>
 <span class="fc" id="L152">        existingStudentObj.setLastName(student.getLastName());</span>
-<span class="pc bpc" id="L153" title="1 of 2 branches missed.">        if (student.getSection() != null) {</span>
+<span class="fc bfc" id="L153" title="All 2 branches covered.">        if (student.getSection() != null) {</span>
 <span class="fc" id="L154">          existingStudentObj.setSection(student.getSection());</span>
         }
 <span class="fc" id="L156">        return new UpsertResponse(InsertStatus.UPDATED, existingStudentObj);</span>
@@ -163,7 +163,7 @@ import org.springframework.web.server.ResponseStatusException;
 <span class="fc" id="L163">      existingStudentObj.setRosterStatus(rosterStatus);</span>
 <span class="fc" id="L164">      existingStudentObj.setFirstName(student.getFirstName());</span>
 <span class="fc" id="L165">      existingStudentObj.setLastName(student.getLastName());</span>
-<span class="pc bpc" id="L166" title="1 of 2 branches missed.">      if (student.getSection() != null) {</span>
+<span class="fc bfc" id="L166" title="All 2 branches covered.">      if (student.getSection() != null) {</span>
 <span class="fc" id="L167">        existingStudentObj.setSection(student.getSection());</span>
       }
 <span class="fc" id="L169">      existingStudentObj.setEmail(convertedEmail.strip());</span>
