@@ -7,6 +7,8 @@ import { hasRole } from "main/utils/currentUser";
 import Modal from "react-bootstrap/Modal";
 import CourseStaffForm from "main/components/CourseStaff/CourseStaffForm";
 import { toast } from "react-toastify";
+import CourseStaffDeleteModal from "main/components/CourseStaff/CourseStaffDeleteModal"
+import { cellToAxiosParamsDelete } from "main/utils/courseStaffUtils";
 
 export default function CourseStaffTable({
   staff,
@@ -15,26 +17,18 @@ export default function CourseStaffTable({
   testIdPrefix = "CourseStaffTable",
 }) {
   const [showEditModal, setShowEditModal] = React.useState(false);
+  const [showDeleteModal, setShowDeleteModal] = React.useState(false);
+  const [deleteCourseStaff, setDeleteCourseStaff] = React.useState(null);
+
   const [editStaff, setEditStaff] = React.useState(null);
 
   // Stryker disable all
   function onDeleteSuccess(message) {
     console.log(message);
     toast(message);
+    hideDeleteModal();
   }
   // Stryker restore all
-
-  function cellToAxiosParamsDelete(cell) {
-    return {
-      // Stryker disable next-line StringLiteral
-      url: "/api/coursestaff/delete",
-      method: "DELETE",
-      params: {
-        id: cell.row.original.id,
-        courseId: courseId,
-      },
-    };
-  }
 
   // Stryker disable all : hard to test for query caching
   const deleteMutation = useBackendMutation(
@@ -61,6 +55,10 @@ export default function CourseStaffTable({
     setShowEditModal(false);
   };
 
+  const hideDeleteModal = () => {
+    setShowDeleteModal(false);
+  }
+
   const onEditSuccess = () => {
     toast("Staff member updated successfully.");
     hideModal();
@@ -68,7 +66,9 @@ export default function CourseStaffTable({
 
   // Stryker disable next-line all
   const deleteCallback = async (cell) => {
-    deleteMutation.mutate(cell);
+    setShowDeleteModal(true);
+    setDeleteCourseStaff(cell.row.original.id)
+    //deleteMutation.mutate(cell);
   };
 
   const editMutation = useBackendMutation(
@@ -85,6 +85,14 @@ export default function CourseStaffTable({
 
   const submitEditForm = (data) => {
     editMutation.mutate(data);
+  };
+
+  const submitDeleteForm = (data) => {
+    deleteMutation.mutate({
+      id: deleteCourseStaff,
+      courseId: courseId,      // add this
+      removeFromOrg: data.removeFromOrg
+    });
   };
 
   const columns = [
@@ -202,6 +210,7 @@ export default function CourseStaffTable({
       ButtonColumn("Delete", "danger", deleteCallback, testIdPrefix),
     );
   }
+  
 
   return (
     <>
@@ -221,6 +230,11 @@ export default function CourseStaffTable({
           />
         </Modal.Body>
       </Modal>
+      <CourseStaffDeleteModal
+      showModal={showDeleteModal}
+      toggleShowModal={setShowDeleteModal}
+      onSubmitAction={submitDeleteForm}
+      />
 
       <OurTable data={staff} columns={columns} testid={testIdPrefix} />
       <div
