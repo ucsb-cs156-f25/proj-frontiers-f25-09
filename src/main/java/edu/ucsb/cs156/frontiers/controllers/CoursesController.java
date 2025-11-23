@@ -356,14 +356,14 @@ public class CoursesController extends ApiController {
             .orElseThrow(() -> new EntityNotFoundException(Course.class, courseId));
 
     // Validate that the email exists in either instructor or admin table
-    boolean isInstructor = instructorRepository.existsByEmail(instructorEmail.strip());
-    boolean isAdmin = adminRepository.existsByEmail(instructorEmail.strip());
+    boolean isInstructor = instructorRepository.existsByEmail(instructorEmail);
+    boolean isAdmin = adminRepository.existsByEmail(instructorEmail);
 
     if (!isInstructor && !isAdmin) {
       throw new IllegalArgumentException("Email must belong to either an instructor or admin");
     }
 
-    course.setInstructorEmail(instructorEmail.strip());
+    course.setInstructorEmail(instructorEmail);
     Course savedCourse = courseRepository.save(course);
 
     return new InstructorCourseView(savedCourse);
