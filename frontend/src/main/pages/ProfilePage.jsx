@@ -9,6 +9,9 @@ import { toast } from "react-toastify";
 import { useState } from "react";
 import ConfirmationModal from "main/components/Common/ConfirmationModal";
 
+import React from "react";
+
+
 const ProfilePage = () => {
   const currentUser = useCurrentUser();
   const onSuccess = (response) => {
@@ -42,7 +45,7 @@ const ProfilePage = () => {
         setShowModal={setViewModal}
       >
         <p>Are you sure you want to disconnect your Github account?</p>
-        <p>Please only do so if you know what you're doing.</p>
+        <p>Please only do so if you know what you&apos;re doing.</p>
       </ConfirmationModal>
       <Row className="align-items-center profile-header mb-5 text-center text-md-left">
         <Col md={2}>

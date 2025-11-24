@@ -8,6 +8,7 @@ import axios from "axios";
 import AxiosMockAdapter from "axios-mock-adapter";
 import { expect, test, vi } from "vitest";
 import { rosterStudentFixtures } from "fixtures/rosterStudentFixtures";
+import React from "react";
 
 const queryClient = new QueryClient();
 const axiosMock = new AxiosMockAdapter(axios);

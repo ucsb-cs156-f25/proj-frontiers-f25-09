@@ -1,5 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import GithubSettingIcon from "main/components/Common/GithubSettingIcon";
+import React from "react";
+
 
 describe("GithubSettingIcon tests", () => {
   test("renders correctly with defaults", () => {

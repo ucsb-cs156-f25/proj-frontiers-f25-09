@@ -2,6 +2,7 @@ import { render, fireEvent, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import TeamsCSVUploadForm from "main/components/Teams/TeamsCSVUploadForm";
 import { vi } from "vitest";
+import React from "react";
 
 describe("TeamsCSVUploadForm Tests", () => {
   const mockSubmitAction = vi.fn();

@@ -8,6 +8,7 @@ import LoadingPage from "main/pages/LoadingPage";
 import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
 import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
 import { vi } from "vitest";
+import React from "react";
 
 const mockNavigate = vi.fn();
 vi.mock("react-router", async (importOriginal) => ({

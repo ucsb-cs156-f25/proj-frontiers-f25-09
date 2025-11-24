@@ -1,5 +1,6 @@
 import { Button, Navbar } from "react-bootstrap";
 import { Link } from "react-router";
+import React from "react";
 
 export default function GithubLogin({ currentUser, systemInfo }) {
   var githubOauthLogin =

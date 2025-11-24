@@ -5,6 +5,7 @@ import { Row } from "react-bootstrap";
 import SignInCard from "main/components/Auth/SignInCard";
 import { useSystemInfo } from "main/utils/systemInfo";
 import loginProviderSchools from "main/utils/loginProviderSchools";
+import React from "react";
 
 export default function SignInPage() {
   const microsoftIcon = () => {

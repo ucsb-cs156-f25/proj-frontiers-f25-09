@@ -3,6 +3,8 @@ import {
   apiCurrentUserFixturesWithGithub,
 } from "fixtures/currentUserFixtures";
 import AppNavbar from "main/components/Nav/AppNavbar";
+import React from "react";
+
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 export default {

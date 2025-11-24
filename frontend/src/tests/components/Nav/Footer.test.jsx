@@ -1,5 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import Footer from "main/components/Nav/Footer";
+import React from "react";
+
 
 describe("Footer tests", () => {
   test("renders correctly", async () => {

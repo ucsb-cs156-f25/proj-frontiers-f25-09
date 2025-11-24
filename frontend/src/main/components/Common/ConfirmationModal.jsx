@@ -1,5 +1,6 @@
 import Modal from "react-bootstrap/Modal";
 import { Button } from "react-bootstrap";
+import React from "react";
 
 export default function ConfirmationModal({
   children,
@@ -39,7 +40,7 @@ export default function ConfirmationModal({
           }}
           variant={"danger"}
         >
-          Yes, I'd like to do this
+          Yes, I&apos;d like to do this
         </Button>
       </Modal.Footer>
     </Modal>

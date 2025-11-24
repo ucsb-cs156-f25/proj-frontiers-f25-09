@@ -4,6 +4,7 @@ import { useSystemInfo } from "main/utils/systemInfo";
 import { Row, Button, Container } from "react-bootstrap";
 import SignInCard from "main/components/Auth/SignInCard";
 import { useLocation } from "react-router";
+import React from "react";
 
 export default function HomePageConnectGithub() {
   const githubIcon = () => {
@@ -47,7 +48,7 @@ export default function HomePageConnectGithub() {
           />
         </Row>
         <div className="mt-4">
-          <p>Don't have a GitHub account?</p>
+          <p>Don&apos;t have a GitHub account?</p>
           <Button
             variant="outline-primary"
             href="https://github.com/signup"

@@ -9,6 +9,7 @@ import axios from "axios";
 import AxiosMockAdapter from "axios-mock-adapter";
 import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
 import { vi } from "vitest";
+import React from "react";
 
 vi.mock("react-router");
 const { _MemoryRouter } = await vi.importActual("react-router");

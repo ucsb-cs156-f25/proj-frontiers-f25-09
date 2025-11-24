@@ -1,4 +1,5 @@
 import { FaGear, FaGithub } from "react-icons/fa6";
+import React from "react";
 
 export default function GithubSettingIcon({
   size = 24,

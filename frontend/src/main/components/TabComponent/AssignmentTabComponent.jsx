@@ -2,6 +2,7 @@ import IndividualAssignmentForm from "main/components/Assignments/IndividualAssi
 import { Card, Row } from "react-bootstrap";
 import { useBackendMutation } from "main/utils/useBackend";
 import { toast } from "react-toastify";
+import React from "react";
 
 export default function AssignmentTabComponent({ courseId }) {
   const onSuccessAssignment = () => {

@@ -2,6 +2,7 @@ import { BrowserRouter } from "react-router";
 import { render, screen } from "@testing-library/react";
 import AccessDeniedPage from "main/pages/Auth/AccessDeniedPage";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import React from "react";
 
 const queryClient = new QueryClient();
 test("Access Denied Page static checks", async () => {

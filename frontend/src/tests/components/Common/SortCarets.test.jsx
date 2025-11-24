@@ -1,5 +1,7 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import SortCaret from "main/components/Common/SortCaret";
+import React from "react";
+
 
 describe("SortCaret tests", () => {
   test("Up arrow when sorted asc", async () => {

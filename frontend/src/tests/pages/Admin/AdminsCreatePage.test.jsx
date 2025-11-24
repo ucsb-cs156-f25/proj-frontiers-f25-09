@@ -9,6 +9,7 @@ import { vi } from "vitest";
 
 import axios from "axios";
 import AxiosMockAdapter from "axios-mock-adapter";
+import React from "react";
 
 const mockToast = vi.fn();
 vi.mock("react-toastify", async (importOriginal) => {

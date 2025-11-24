@@ -2,6 +2,7 @@ import { hasRole } from "main/utils/currentUser";
 import AccessDeniedPage from "main/pages/Auth/AccessDeniedPage";
 import PromptSignInPage from "main/pages/Auth/PromptSignInPage";
 import LoadingPage from "main/pages/LoadingPage";
+import React from "react";
 
 export default function ProtectedPage({ component, currentUser, enforceRole }) {
   if (currentUser.initialData) {

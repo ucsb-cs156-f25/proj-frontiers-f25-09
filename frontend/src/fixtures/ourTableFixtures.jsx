@@ -1,4 +1,5 @@
 import { createColumnHelper } from "@tanstack/react-table";
+import React from "react";
 const columnHelper = createColumnHelper();
 
 const ourTableFixtures = {

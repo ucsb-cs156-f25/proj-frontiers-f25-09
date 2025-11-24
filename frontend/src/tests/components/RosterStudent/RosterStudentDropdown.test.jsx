@@ -3,6 +3,8 @@ import { rosterStudentFixtures } from "fixtures/rosterStudentFixtures";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter } from "react-router";
 import RosterStudentDropdown from "main/components/RosterStudent/RosterStudentDropdown";
+import React from "react";
+
 
 const queryClient = new QueryClient();
 describe("RosterStudentForm tests", () => {

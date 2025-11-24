@@ -10,6 +10,7 @@ import UpdateInstructorForm from "main/components/Courses/UpdateInstructorForm";
 import CourseModal from "main/components/Courses/CourseModal";
 import Modal from "react-bootstrap/Modal";
 import { useLocation } from "react-router";
+import React from "react";
 
 export default function InstructorCoursesTable({
   courses,

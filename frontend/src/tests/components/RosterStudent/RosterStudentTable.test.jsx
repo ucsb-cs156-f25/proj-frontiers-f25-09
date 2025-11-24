@@ -7,6 +7,8 @@ import { currentUserFixtures } from "fixtures/currentUserFixtures";
 import axios from "axios";
 import AxiosMockAdapter from "axios-mock-adapter";
 import { expect, vi } from "vitest";
+import React from "react";
+
 
 const queryClient = new QueryClient();
 const axiosMock = new AxiosMockAdapter(axios);

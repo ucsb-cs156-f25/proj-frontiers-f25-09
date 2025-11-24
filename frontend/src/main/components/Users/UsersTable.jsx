@@ -1,4 +1,5 @@
 import OurTable from "main/components/OurTable";
+import React from "react";
 
 const columns = [
   {

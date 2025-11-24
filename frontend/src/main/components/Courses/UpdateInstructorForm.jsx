@@ -1,5 +1,6 @@
 import { Button, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
+import React from "react";
 
 export default function UpdateInstructorForm({
   initialContents,

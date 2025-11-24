@@ -3,6 +3,8 @@ import OurTable, { ButtonColumn } from "main/components/OurTable";
 import ourTableFixtures from "fixtures/ourTableFixtures";
 import { vi } from "vitest";
 import { convertOldStyleColumnsToNewStyle } from "main/components/OurTableUtils";
+import React from "react";
+
 
 describe("OurTable tests", () => {
   describe("OurTable helper tests", () => {

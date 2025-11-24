@@ -4,6 +4,7 @@ import { hasRole } from "main/utils/currentUser";
 import AppNavbarLocalhost from "main/components/Nav/AppNavbarLocalhost";
 import GoogleLogin from "main/components/Nav/GoogleLogin";
 import GithubLogin from "main/components/Nav/GithubLogin";
+import React from "react";
 
 export default function AppNavbar({
   currentUser,

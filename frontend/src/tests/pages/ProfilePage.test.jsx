@@ -11,6 +11,7 @@ import AxiosMockAdapter from "axios-mock-adapter";
 import ProfilePage from "main/pages/ProfilePage";
 import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
 import { vi } from "vitest";
+import React from "react";
 
 const axiosMock = new AxiosMockAdapter(axios);
 const queryClient = new QueryClient({

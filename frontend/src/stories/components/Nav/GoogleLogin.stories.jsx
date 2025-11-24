@@ -1,5 +1,6 @@
 import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
 import GoogleLogin from "main/components/Nav/GoogleLogin";
+import React from "react";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 export default {

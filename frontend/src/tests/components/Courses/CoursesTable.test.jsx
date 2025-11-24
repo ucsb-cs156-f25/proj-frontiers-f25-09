@@ -9,6 +9,8 @@ import coursesFixtures from "fixtures/coursesFixtures";
 import CoursesTable from "main/components/Courses/CoursesTable";
 import { BrowserRouter } from "react-router";
 import { vi } from "vitest";
+import React from "react";
+
 
 const joinCallback = vi.fn();
 const isLoading = vi.fn(() => false);

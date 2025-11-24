@@ -25,6 +25,7 @@ import SignInPage from "main/pages/Auth/SignInPage";
 import NotFoundPage from "main/pages/Auth/NotFoundPage";
 import HelpAboutPage from "main/pages/Help/HelpAboutPage";
 import HelpCsvPage from "main/pages/Help/HelpCsvPage";
+import React from "react";
 
 function App() {
   const currentUser = useCurrentUser();

@@ -1,4 +1,5 @@
 import { Badge } from "react-bootstrap";
+import React from "react";
 
 export default function RoleBadge({ role, currentUser }) {
   const roles = currentUser.root.roles.map((o) => o.authority);

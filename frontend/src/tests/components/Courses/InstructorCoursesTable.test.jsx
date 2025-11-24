@@ -7,6 +7,8 @@ import { BrowserRouter, MemoryRouter } from "react-router";
 import AxiosMockAdapter from "axios-mock-adapter";
 import axios from "axios";
 import { vi } from "vitest";
+import React from "react";
+
 
 window.alert = vi.fn();
 

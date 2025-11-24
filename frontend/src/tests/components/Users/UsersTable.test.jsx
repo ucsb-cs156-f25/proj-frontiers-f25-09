@@ -1,6 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import usersFixtures from "fixtures/usersFixtures";
 import UsersTable from "main/components/Users/UsersTable";
+import React from "react";
 
 describe("UserTable tests", () => {
   test("renders without crashing for empty table", () => {

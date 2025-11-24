@@ -5,6 +5,8 @@ import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import DroppedStudentsTable from "main/components/RosterStudent/DroppedStudentsTable";
 import { rosterStudentFixtures } from "fixtures/rosterStudentFixtures";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import React from "react";
+
 
 const axiosMock = new AxiosMockAdapter(axios);
 const queryClient = new QueryClient();

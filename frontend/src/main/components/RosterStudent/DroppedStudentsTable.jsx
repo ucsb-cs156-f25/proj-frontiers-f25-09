@@ -1,6 +1,7 @@
 import { useBackendMutation } from "main/utils/useBackend";
 import { toast } from "react-toastify";
 import OurTable, { ButtonColumn } from "main/components/OurTable";
+import React from "react";
 
 export default function DroppedStudentsTable({ students, courseId }) {
   const columns = [

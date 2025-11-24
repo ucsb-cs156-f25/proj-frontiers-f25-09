@@ -9,6 +9,7 @@ import mockConsole from "tests/testutils/mockConsole";
 
 import axios from "axios";
 import AxiosMockAdapter from "axios-mock-adapter";
+import React from "react";
 
 describe("AdminUsersPage tests", () => {
   const axiosMock = new AxiosMockAdapter(axios);

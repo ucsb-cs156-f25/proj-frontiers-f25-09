@@ -21,6 +21,7 @@ import userEvent from "@testing-library/user-event";
 import { currentUserFixtures } from "fixtures/currentUserFixtures";
 import { vi } from "vitest";
 import { toast } from "react-toastify";
+import React from "react";
 
 const axiosMock = new AxiosMockAdapter(axios);
 const queryClient = new QueryClient();

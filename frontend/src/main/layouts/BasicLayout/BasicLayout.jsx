@@ -3,6 +3,7 @@ import Footer from "main/components/Nav/Footer";
 import AppNavbar from "main/components/Nav/AppNavbar";
 import { useCurrentUser, useLogout } from "main/utils/currentUser";
 import { useSystemInfo } from "main/utils/systemInfo";
+import React from "react";
 
 export default function BasicLayout({ children }) {
   const currentUser = useCurrentUser();

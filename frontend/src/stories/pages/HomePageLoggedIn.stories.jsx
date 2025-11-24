@@ -5,6 +5,8 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import HomePageLoggedIn from "main/pages/HomePageLoggedIn";
 import coursesFixtures from "fixtures/coursesFixtures";
+import React from "react";
+
 export default {
   title: "pages/HomePageLoggedIn",
   component: HomePageLoggedIn,

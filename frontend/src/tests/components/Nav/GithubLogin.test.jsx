@@ -9,6 +9,8 @@ import {
 import GithubLogin from "main/components/Nav/GithubLogin";
 import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
 import { vi } from "vitest";
+import React from "react";
+
 
 describe("GithubLogin tests", () => {
   const queryClient = new QueryClient();

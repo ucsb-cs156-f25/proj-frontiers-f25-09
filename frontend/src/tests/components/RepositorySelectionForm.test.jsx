@@ -6,6 +6,8 @@ import collectionNames from "fixtures/collectionNames";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { vi } from "vitest";
+import React from "react";
+
 
 const mockedNavigate = vi.fn();
 const queryClient = new QueryClient();

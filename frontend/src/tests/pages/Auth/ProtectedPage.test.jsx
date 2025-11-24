@@ -3,6 +3,7 @@ import { BrowserRouter } from "react-router";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import ProtectedPage from "main/pages/Auth/ProtectedPage";
 import { currentUserFixtures } from "fixtures/currentUserFixtures";
+import React from "react";
 
 const queryClient = new QueryClient();
 

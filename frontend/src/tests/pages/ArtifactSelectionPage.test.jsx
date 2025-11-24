@@ -7,6 +7,7 @@ import axios from "axios";
 import AxiosMockAdapter from "axios-mock-adapter";
 import collectionNames from "fixtures/collectionNames";
 import { vi } from "vitest";
+import React from "react";
 
 const axiosMock = new AxiosMockAdapter(axios);
 const queryClient = new QueryClient();

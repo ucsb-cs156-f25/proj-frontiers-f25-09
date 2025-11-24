@@ -6,6 +6,8 @@ import { currentUserFixtures } from "fixtures/currentUserFixtures";
 import GoogleLogin from "main/components/Nav/GoogleLogin";
 import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
 import { vi } from "vitest";
+import React from "react";
+
 
 describe("GoogleLogin tests", () => {
   const queryClient = new QueryClient();

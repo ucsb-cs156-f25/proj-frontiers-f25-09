@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { MemoryRouter } from "react-router";
 import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
 import PromptSignInPage from "main/pages/Auth/PromptSignInPage";
+import React from "react";
 
 const axiosMock = new AxiosMockAdapter(axios);
 const queryClient = new QueryClient();

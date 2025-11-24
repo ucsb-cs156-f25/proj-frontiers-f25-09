@@ -13,6 +13,7 @@ import { describe, expect, test, vi } from "vitest";
 import { toast } from "react-toastify";
 import TeamsTabComponent from "main/components/TabComponent/TeamsTabComponent";
 import { MemoryRouter } from "react-router";
+import React from "react";
 
 const axiosMock = new AxiosMockAdapter(axios);
 const queryClient = new QueryClient();

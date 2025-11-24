@@ -2,6 +2,7 @@ import Modal from "react-bootstrap/Modal";
 import { Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { useEffect } from "react";
+import React from "react";
 
 function CourseModal({
   onSubmitAction,

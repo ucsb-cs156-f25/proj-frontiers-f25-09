@@ -10,6 +10,7 @@ import StaffTabComponent from "main/components/TabComponent/StaffTabComponent";
 import { currentUserFixtures } from "fixtures/currentUserFixtures";
 import { courseStaffFixtures } from "fixtures/courseStaffFixtures";
 import { vi } from "vitest";
+import React from "react";
 
 const queryClient = new QueryClient();
 const testId = "InstructorCourseShowPage";

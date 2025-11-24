@@ -130,10 +130,11 @@ export default function RosterStudentTable({
     },
   ];
 
-  const renderTooltip = (orgStatus) => (props) => {
-    let set_message;
+  const renderTooltip = (orgStatus) => {
+    const tooltipComponent = (props) => {
+      let set_message;
 
-    switch (orgStatus) {
+      switch (orgStatus) {
       case "PENDING":
         set_message =
           "Student cannot join the course until it has been completely set up.";
@@ -157,12 +158,14 @@ export default function RosterStudentTable({
       default:
         set_message = "Tooltip for illegal status that will never occur";
         break;
-    }
-    return (
-      <Tooltip id={`${orgStatus.toLowerCase()}-tooltip`} {...props}>
-        {set_message}
-      </Tooltip>
-    );
+      }
+      return (
+        <Tooltip id={`${orgStatus.toLowerCase()}-tooltip`} {...props}>
+          {set_message}
+        </Tooltip>
+      );
+    };
+    return tooltipComponent;
   };
 
   columns.push({

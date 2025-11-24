@@ -14,7 +14,7 @@ export default function HelpCsvPage() {
           formats are supported. When a new roster CSV is uploaded, any student
           who appeared in a previous upload but does not appear in the new CSV
           is automatically marked as DROPPED. Students who were manually added
-          are never marked as DROPPED. If you would like your university's
+          are never marked as DROPPED. If you would like your university&apos;s
           format to be supported, please contact the Frontiers development team,
           supplying a sample CSV (with fictional data).
         </p>
@@ -131,7 +131,7 @@ export default function HelpCsvPage() {
             <Accordion.Body>
               <p>
                 The following CSV format can be obtained from the Canvas system
-                at Chico State, through the "New Analytics" feature:
+                at Chico State, through the &quot;New Analytics&quot; feature:
               </p>
               <pre className={"csvExample"} data-testid="chicoStateCsvExample">
                 {csvFixtures.chicoStateCanvas}
@@ -299,7 +299,7 @@ export default function HelpCsvPage() {
                     <td>Email</td>
                     <td>email</td>
                     <td>
-                      Student's email address used to match to the roster.
+                      Student&apos;s email address used to match to the roster.
                     </td>
                   </tr>
                 </tbody>
@@ -351,21 +351,21 @@ export default function HelpCsvPage() {
                   <tr>
                     <td>studentId</td>
                     <td>Student ID</td>
-                    <td>Student's university ID (e.g., Perm # at UCSB)</td>
+                    <td>Student&apos;s university ID (e.g., Perm # at UCSB)</td>
                   </tr>
                   <tr>
                     <td>firstName</td>
-                    <td>Student's first name</td>
+                    <td>Student&apos;s first name</td>
                     <td></td>
                   </tr>
                   <tr>
                     <td>lastName</td>
-                    <td>Student's last name</td>
+                    <td>Student&apos;s last name</td>
                     <td></td>
                   </tr>
                   <tr>
                     <td>email</td>
-                    <td>Student's email address</td>
+                    <td>Student&apos;s email address</td>
                     <td></td>
                   </tr>
                   <tr>
@@ -376,12 +376,12 @@ export default function HelpCsvPage() {
                   <tr>
                     <td>githubId</td>
                     <td>GitHub user ID</td>
-                    <td>Student's GitHub account ID, if connected</td>
+                    <td>Student&apos;s GitHub account ID, if connected</td>
                   </tr>
                   <tr>
                     <td>githubLogin</td>
                     <td>GitHub username</td>
-                    <td>Student's GitHub username, if connected</td>
+                    <td>Student&apos;s GitHub username, if connected</td>
                   </tr>
                   <tr>
                     <td>rosterStatus</td>

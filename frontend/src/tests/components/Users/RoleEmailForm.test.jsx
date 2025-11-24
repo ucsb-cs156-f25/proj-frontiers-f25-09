@@ -4,6 +4,7 @@ import { BrowserRouter as Router } from "react-router";
 import RoleEmailForm from "main/components/Users/RoleEmailForm";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import React from "react";
 
 const mockedNavigate = vi.fn();
 vi.mock("react-router", async (importOriginal) => ({

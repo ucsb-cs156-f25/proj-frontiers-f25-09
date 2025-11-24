@@ -17,6 +17,7 @@ import axios from "axios";
 import AxiosMockAdapter from "axios-mock-adapter";
 import { rosterStudentFixtures } from "fixtures/rosterStudentFixtures";
 import { vi } from "vitest";
+import React from "react";
 
 const mockedNavigate = vi.fn();
 vi.mock("react-router", async (importOriginal) => ({

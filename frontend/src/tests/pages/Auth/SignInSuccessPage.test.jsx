@@ -4,6 +4,7 @@ import SignInSuccessPage from "main/pages/Auth/SignInSuccessPage";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import mockConsole from "tests/testutils/mockConsole";
 import { vi } from "vitest";
+import React from "react";
 
 const queryClient = new QueryClient();
 

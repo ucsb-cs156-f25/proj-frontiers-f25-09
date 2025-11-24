@@ -1,6 +1,7 @@
 import Modal from "react-bootstrap/Modal";
 import { useForm } from "react-hook-form";
 import { Form } from "react-bootstrap";
+import React from "react";
 
 export default function RosterStudentDeleteModal({
   onSubmitAction,

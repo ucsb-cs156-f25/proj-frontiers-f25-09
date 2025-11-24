@@ -6,6 +6,7 @@ import SignInCard from "main/components/Auth/SignInCard";
 import { useSystemInfo } from "main/utils/systemInfo";
 import { useLocation } from "react-router";
 import loginProviderSchools from "main/utils/loginProviderSchools";
+import React from "react";
 
 export default function PromptSignInPage() {
   const microsoftIcon = () => {
