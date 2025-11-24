@@ -3,7 +3,6 @@ import { FcGoogle } from "react-icons/fc";
 import { FaMicrosoft } from "react-icons/fa";
 import React from "react";
 
-
 export default {
   title: "components/Auth/SignInCard",
   component: SignInCard,

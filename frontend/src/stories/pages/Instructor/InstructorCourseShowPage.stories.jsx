@@ -3,7 +3,6 @@ import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
 import { http, HttpResponse } from "msw";
 import React from "react";
 
-
 import {
   withRouter,
   reactRouterParameters,

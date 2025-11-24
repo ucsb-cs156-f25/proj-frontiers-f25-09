@@ -3,7 +3,6 @@ import { Form, Button } from "react-bootstrap";
 import { FaCheckCircle } from "react-icons/fa";
 import React from "react";
 
-
 function RepositorySelectionForm({ collections = [] }) {
   const [url, setURL] = useState("");
   const [messageURL, setMessageURL] = useState("");

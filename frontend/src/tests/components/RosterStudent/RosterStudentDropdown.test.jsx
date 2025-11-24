@@ -5,7 +5,6 @@ import { BrowserRouter } from "react-router";
 import RosterStudentDropdown from "main/components/RosterStudent/RosterStudentDropdown";
 import React from "react";
 
-
 const queryClient = new QueryClient();
 describe("RosterStudentForm tests", () => {
   beforeEach(() => {

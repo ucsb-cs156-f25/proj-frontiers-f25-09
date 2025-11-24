@@ -3,7 +3,6 @@ import ConfirmationModal from "main/components/Common/ConfirmationModal";
 import { vi } from "vitest";
 import React from "react";
 
-
 test("Sanity Check Modal works as designed", async () => {
   const mockSubmit = vi.fn();
   const showModal = vi.fn();

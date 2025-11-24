@@ -4,7 +4,6 @@ import { useNavigate } from "react-router";
 import regexUtils from "main/utils/regexUtils";
 import React from "react";
 
-
 function CourseStaffForm({
   initialContents,
   submitAction,

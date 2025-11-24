@@ -3,7 +3,6 @@ import IndividualAssignmentForm from "main/components/Assignments/IndividualAssi
 import { vi } from "vitest";
 import React from "react";
 
-
 const mockSubmit = vi.fn();
 
 test("No submit call on empty prefix", async () => {

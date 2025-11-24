@@ -11,7 +11,6 @@ import ConfirmationModal from "main/components/Common/ConfirmationModal";
 
 import React from "react";
 
-
 const ProfilePage = () => {
   const currentUser = useCurrentUser();
   const onSuccess = (response) => {

@@ -135,29 +135,29 @@ export default function RosterStudentTable({
       let set_message;
 
       switch (orgStatus) {
-      case "PENDING":
-        set_message =
-          "Student cannot join the course until it has been completely set up.";
-        break;
-      case "JOINCOURSE":
-        set_message =
-          "Student has been prompted to join, but hasn't yet clicked the 'Join Course' button to generate an invite to the organization.";
-        break;
-      case "INVITED":
-        set_message =
-          "Student has generated an invite, but has not yet accepted or declined the invitation.";
-        break;
-      case "OWNER":
-        set_message =
-          "Student is an owner of the GitHub organization associated with this course.";
-        break;
-      case "MEMBER":
-        set_message =
-          "Student is a member of the GitHub organization associated with this course.";
-        break;
-      default:
-        set_message = "Tooltip for illegal status that will never occur";
-        break;
+        case "PENDING":
+          set_message =
+            "Student cannot join the course until it has been completely set up.";
+          break;
+        case "JOINCOURSE":
+          set_message =
+            "Student has been prompted to join, but hasn't yet clicked the 'Join Course' button to generate an invite to the organization.";
+          break;
+        case "INVITED":
+          set_message =
+            "Student has generated an invite, but has not yet accepted or declined the invitation.";
+          break;
+        case "OWNER":
+          set_message =
+            "Student is an owner of the GitHub organization associated with this course.";
+          break;
+        case "MEMBER":
+          set_message =
+            "Student is a member of the GitHub organization associated with this course.";
+          break;
+        default:
+          set_message = "Tooltip for illegal status that will never occur";
+          break;
       }
       return (
         <Tooltip id={`${orgStatus.toLowerCase()}-tooltip`} {...props}>

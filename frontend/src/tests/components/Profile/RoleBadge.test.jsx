@@ -3,7 +3,6 @@ import { currentUserFixtures } from "fixtures/currentUserFixtures";
 import RoleBadge from "main/components/Profile/RoleBadge";
 import React from "react";
 
-
 describe("RoleBadge tests", () => {
   test("renders without crashing for ROLE_USER when user has ROLE_USER", async () => {
     render(

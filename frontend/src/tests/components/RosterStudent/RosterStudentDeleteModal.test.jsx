@@ -3,7 +3,6 @@ import RosterStudentDeleteModal from "main/components/RosterStudent/RosterStuden
 import { fireEvent, render, waitFor, screen } from "@testing-library/react";
 import React from "react";
 
-
 const mockSubmit = vi.fn();
 const showModal = vi.fn();
 const toggleShowModal = vi.fn();

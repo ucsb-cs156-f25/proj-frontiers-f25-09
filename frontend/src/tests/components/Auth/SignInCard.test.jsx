@@ -3,7 +3,6 @@ import { render, screen } from "@testing-library/react";
 import SignInCard from "main/components/Auth/SignInCard";
 import React from "react";
 
-
 const exampleIcon = () => {
   return <FcGoogle size={"10em"} />;
 };

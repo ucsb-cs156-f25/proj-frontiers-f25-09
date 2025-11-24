@@ -9,7 +9,6 @@ import axios from "axios";
 import { vi } from "vitest";
 import React from "react";
 
-
 window.alert = vi.fn();
 
 const mockToast = vi.fn();

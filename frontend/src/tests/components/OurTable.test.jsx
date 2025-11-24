@@ -5,7 +5,6 @@ import { vi } from "vitest";
 import { convertOldStyleColumnsToNewStyle } from "main/components/OurTableUtils";
 import React from "react";
 
-
 describe("OurTable tests", () => {
   describe("OurTable helper tests", () => {
     test("add id when it doesn't exist", () => {

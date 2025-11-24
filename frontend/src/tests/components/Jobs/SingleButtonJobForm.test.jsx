@@ -3,7 +3,6 @@ import SingleButtonJobForm from "main/components/Jobs/SingleButtonJobForm";
 import { vi } from "vitest";
 import React from "react";
 
-
 describe("SingleButtonJobForm tests", () => {
   test("renders correctly with the provided text", () => {
     const text = "Test Button";

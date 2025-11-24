@@ -8,7 +8,6 @@ import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
 import { vi } from "vitest";
 import React from "react";
 
-
 describe("GoogleLogin tests", () => {
   const queryClient = new QueryClient();
 

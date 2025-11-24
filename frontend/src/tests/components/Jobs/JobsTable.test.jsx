@@ -6,7 +6,6 @@ import { formatTime } from "main/utils/dateUtils";
 import { vi } from "vitest";
 import React from "react";
 
-
 vi.mock("main/utils/dateUtils", () => ({
   formatTime: vi.fn(),
 }));

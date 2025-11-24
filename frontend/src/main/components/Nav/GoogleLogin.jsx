@@ -3,7 +3,6 @@ import { Link } from "react-router";
 import HelpMenu from "main/components/Nav/HelpMenu";
 import React from "react";
 
-
 export default function GoogleLogin({ currentUser, handleLogin, doLogout }) {
   return (
     <>

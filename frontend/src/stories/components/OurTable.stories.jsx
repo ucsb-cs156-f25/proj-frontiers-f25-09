@@ -2,7 +2,6 @@ import OurTable, { ButtonColumn } from "main/components/OurTable";
 import ourTableFixtures from "fixtures/ourTableFixtures";
 import React from "react";
 
-
 export default {
   title: "components/OurTable",
   component: OurTable,

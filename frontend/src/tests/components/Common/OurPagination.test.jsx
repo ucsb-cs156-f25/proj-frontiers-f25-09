@@ -4,7 +4,6 @@ import { useState } from "react";
 import { vi } from "vitest";
 import React from "react";
 
-
 const checkTestIdsInOrder = (testIds) => {
   const links = screen.getAllByTestId(/OurPagination-/);
   expect(links.length).toBe(testIds.length);
