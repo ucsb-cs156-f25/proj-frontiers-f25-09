@@ -173,14 +173,15 @@ import org.springframework.web.server.ResponseStatusException;
 <span class="fc" id="L173">      student.setCourse(course);</span>
 <span class="fc" id="L174">      student.setEmail(convertedEmail.strip());</span>
 <span class="fc" id="L175">      student.setRosterStatus(rosterStatus);</span>
-      // if an installationID exists, orgStatus should be set to JOINCOURSE. if it doesn't exist
+      // if an installationID exists, orgStatus should be set to JOINCOURSE. if it
+      // doesn't exist
       // (null), set orgStatus to PENDING.
-<span class="fc bfc" id="L178" title="All 2 branches covered.">      if (course.getInstallationId() != null) {</span>
-<span class="fc" id="L179">        student.setOrgStatus(OrgStatus.JOINCOURSE);</span>
+<span class="fc bfc" id="L179" title="All 2 branches covered.">      if (course.getInstallationId() != null) {</span>
+<span class="fc" id="L180">        student.setOrgStatus(OrgStatus.JOINCOURSE);</span>
       } else {
-<span class="fc" id="L181">        student.setOrgStatus(OrgStatus.PENDING);</span>
+<span class="fc" id="L182">        student.setOrgStatus(OrgStatus.PENDING);</span>
       }
-<span class="fc" id="L183">      return new UpsertResponse(InsertStatus.INSERTED, student);</span>
+<span class="fc" id="L184">      return new UpsertResponse(InsertStatus.INSERTED, student);</span>
     }
   }
 
@@ -189,21 +190,21 @@ import org.springframework.web.server.ResponseStatusException;
   public Job updateCourseMembership(
       @Parameter(name = &quot;courseId&quot;, description = &quot;Course ID&quot;) @RequestParam Long courseId)
       throws NoSuchAlgorithmException, InvalidKeySpecException, JsonProcessingException {
-<span class="fc" id="L192">    Course course =</span>
+<span class="fc" id="L193">    Course course =</span>
         courseRepository
-<span class="fc" id="L194">            .findById(courseId)</span>
-<span class="fc" id="L195">            .orElseThrow(() -&gt; new EntityNotFoundException(Course.class, courseId));</span>
-<span class="fc bfc" id="L196" title="All 4 branches covered.">    if (course.getInstallationId() == null || course.getOrgName() == null) {</span>
-<span class="fc" id="L197">      throw new NoLinkedOrganizationException(course.getCourseName());</span>
+<span class="fc" id="L195">            .findById(courseId)</span>
+<span class="fc" id="L196">            .orElseThrow(() -&gt; new EntityNotFoundException(Course.class, courseId));</span>
+<span class="fc bfc" id="L197" title="All 4 branches covered.">    if (course.getInstallationId() == null || course.getOrgName() == null) {</span>
+<span class="fc" id="L198">      throw new NoLinkedOrganizationException(course.getCourseName());</span>
     } else {
       UpdateOrgMembershipJob job =
-<span class="fc" id="L200">          UpdateOrgMembershipJob.builder()</span>
-<span class="fc" id="L201">              .rosterStudentRepository(rosterStudentRepository)</span>
-<span class="fc" id="L202">              .organizationMemberService(organizationMemberService)</span>
-<span class="fc" id="L203">              .course(course)</span>
-<span class="fc" id="L204">              .build();</span>
+<span class="fc" id="L201">          UpdateOrgMembershipJob.builder()</span>
+<span class="fc" id="L202">              .rosterStudentRepository(rosterStudentRepository)</span>
+<span class="fc" id="L203">              .organizationMemberService(organizationMemberService)</span>
+<span class="fc" id="L204">              .course(course)</span>
+<span class="fc" id="L205">              .build();</span>
 
-<span class="fc" id="L206">      return jobService.runAsJob(job);</span>
+<span class="fc" id="L207">      return jobService.runAsJob(job);</span>
     }
   }
 
@@ -220,46 +221,46 @@ import org.springframework.web.server.ResponseStatusException;
           Long rosterStudentId)
       throws NoSuchAlgorithmException, InvalidKeySpecException, JsonProcessingException {
 
-<span class="fc" id="L223">    User currentUser = currentUserService.getUser();</span>
-<span class="fc" id="L224">    RosterStudent rosterStudent =</span>
+<span class="fc" id="L224">    User currentUser = currentUserService.getUser();</span>
+<span class="fc" id="L225">    RosterStudent rosterStudent =</span>
         rosterStudentRepository
-<span class="fc" id="L226">            .findById(rosterStudentId)</span>
-<span class="fc" id="L227">            .orElseThrow(() -&gt; new EntityNotFoundException(RosterStudent.class, rosterStudentId));</span>
+<span class="fc" id="L227">            .findById(rosterStudentId)</span>
+<span class="fc" id="L228">            .orElseThrow(() -&gt; new EntityNotFoundException(RosterStudent.class, rosterStudentId));</span>
 
-<span class="fc bfc" id="L229" title="All 4 branches covered.">    if (rosterStudent.getUser() == null || currentUser.getId() != rosterStudent.getUser().getId()) {</span>
-<span class="fc" id="L230">      throw new AccessDeniedException(&quot;User not authorized join the course as this roster student&quot;);</span>
+<span class="fc bfc" id="L230" title="All 4 branches covered.">    if (rosterStudent.getUser() == null || currentUser.getId() != rosterStudent.getUser().getId()) {</span>
+<span class="fc" id="L231">      throw new AccessDeniedException(&quot;User not authorized join the course as this roster student&quot;);</span>
     }
 
-<span class="fc bfc" id="L233" title="All 2 branches covered.">    if (rosterStudent.getRosterStatus() == RosterStatus.DROPPED) {</span>
-<span class="fc" id="L234">      throw new AccessDeniedException(</span>
+<span class="fc bfc" id="L234" title="All 2 branches covered.">    if (rosterStudent.getRosterStatus() == RosterStatus.DROPPED) {</span>
+<span class="fc" id="L235">      throw new AccessDeniedException(</span>
           &quot;You have dropped this course. Please contact your instructor.&quot;);
     }
 
-<span class="fc bfc" id="L238" title="All 2 branches covered.">    if (rosterStudent.getGithubId() != null</span>
-<span class="fc bfc" id="L239" title="All 2 branches covered.">        &amp;&amp; rosterStudent.getGithubLogin() != null</span>
-<span class="fc bfc" id="L240" title="All 2 branches covered.">        &amp;&amp; (rosterStudent.getOrgStatus() == OrgStatus.MEMBER</span>
-<span class="fc bfc" id="L241" title="All 2 branches covered.">            || rosterStudent.getOrgStatus() == OrgStatus.OWNER)) {</span>
-<span class="fc" id="L242">      return ResponseEntity.badRequest()</span>
-<span class="fc" id="L243">          .body(&quot;This user has already linked a Github account to this course.&quot;);</span>
+<span class="fc bfc" id="L239" title="All 2 branches covered.">    if (rosterStudent.getGithubId() != null</span>
+<span class="fc bfc" id="L240" title="All 2 branches covered.">        &amp;&amp; rosterStudent.getGithubLogin() != null</span>
+<span class="fc bfc" id="L241" title="All 2 branches covered.">        &amp;&amp; (rosterStudent.getOrgStatus() == OrgStatus.MEMBER</span>
+<span class="fc bfc" id="L242" title="All 2 branches covered.">            || rosterStudent.getOrgStatus() == OrgStatus.OWNER)) {</span>
+<span class="fc" id="L243">      return ResponseEntity.badRequest()</span>
+<span class="fc" id="L244">          .body(&quot;This user has already linked a Github account to this course.&quot;);</span>
     }
 
-<span class="fc bfc" id="L246" title="All 2 branches covered.">    if (rosterStudent.getCourse().getOrgName() == null</span>
-<span class="fc bfc" id="L247" title="All 2 branches covered.">        || rosterStudent.getCourse().getInstallationId() == null) {</span>
-<span class="fc" id="L248">      return ResponseEntity.badRequest()</span>
-<span class="fc" id="L249">          .body(&quot;Course has not been set up. Please ask your instructor for help.&quot;);</span>
+<span class="fc bfc" id="L247" title="All 2 branches covered.">    if (rosterStudent.getCourse().getOrgName() == null</span>
+<span class="fc bfc" id="L248" title="All 2 branches covered.">        || rosterStudent.getCourse().getInstallationId() == null) {</span>
+<span class="fc" id="L249">      return ResponseEntity.badRequest()</span>
+<span class="fc" id="L250">          .body(&quot;Course has not been set up. Please ask your instructor for help.&quot;);</span>
     }
-<span class="fc" id="L251">    rosterStudent.setGithubId(currentUser.getGithubId());</span>
-<span class="fc" id="L252">    rosterStudent.setGithubLogin(currentUser.getGithubLogin());</span>
-<span class="fc" id="L253">    OrgStatus status = organizationMemberService.inviteOrganizationMember(rosterStudent);</span>
-<span class="fc" id="L254">    rosterStudent.setOrgStatus(status);</span>
-<span class="fc" id="L255">    rosterStudentRepository.save(rosterStudent);</span>
-<span class="fc bfc" id="L256" title="All 2 branches covered.">    if (status == OrgStatus.INVITED) {</span>
-<span class="fc" id="L257">      return ResponseEntity.accepted().body(&quot;Successfully invited student to Organization&quot;);</span>
-<span class="fc bfc" id="L258" title="All 4 branches covered.">    } else if (status == OrgStatus.MEMBER || status == OrgStatus.OWNER) {</span>
-<span class="fc" id="L259">      return ResponseEntity.accepted()</span>
-<span class="fc" id="L260">          .body(&quot;Already in organization - set status to %s&quot;.formatted(status.toString()));</span>
+<span class="fc" id="L252">    rosterStudent.setGithubId(currentUser.getGithubId());</span>
+<span class="fc" id="L253">    rosterStudent.setGithubLogin(currentUser.getGithubLogin());</span>
+<span class="fc" id="L254">    OrgStatus status = organizationMemberService.inviteOrganizationMember(rosterStudent);</span>
+<span class="fc" id="L255">    rosterStudent.setOrgStatus(status);</span>
+<span class="fc" id="L256">    rosterStudentRepository.save(rosterStudent);</span>
+<span class="fc bfc" id="L257" title="All 2 branches covered.">    if (status == OrgStatus.INVITED) {</span>
+<span class="fc" id="L258">      return ResponseEntity.accepted().body(&quot;Successfully invited student to Organization&quot;);</span>
+<span class="fc bfc" id="L259" title="All 4 branches covered.">    } else if (status == OrgStatus.MEMBER || status == OrgStatus.OWNER) {</span>
+<span class="fc" id="L260">      return ResponseEntity.accepted()</span>
+<span class="fc" id="L261">          .body(&quot;Already in organization - set status to %s&quot;.formatted(status.toString()));</span>
     } else {
-<span class="fc" id="L262">      return ResponseEntity.internalServerError().body(&quot;Could not invite student to Organization&quot;);</span>
+<span class="fc" id="L263">      return ResponseEntity.internalServerError().body(&quot;Could not invite student to Organization&quot;);</span>
     }
   }
 
@@ -267,9 +268,9 @@ import org.springframework.web.server.ResponseStatusException;
   @PreAuthorize(&quot;hasRole('ROLE_USER')&quot;)
   @GetMapping(&quot;/associatedRosterStudents&quot;)
   public Iterable&lt;RosterStudent&gt; getAssociatedRosterStudents() {
-<span class="fc" id="L270">    User currentUser = currentUserService.getUser();</span>
-<span class="fc" id="L271">    Iterable&lt;RosterStudent&gt; rosterStudents = rosterStudentRepository.findAllByUser((currentUser));</span>
-<span class="fc" id="L272">    return rosterStudents;</span>
+<span class="fc" id="L271">    User currentUser = currentUserService.getUser();</span>
+<span class="fc" id="L272">    Iterable&lt;RosterStudent&gt; rosterStudents = rosterStudentRepository.findAllByUser((currentUser));</span>
+<span class="fc" id="L273">    return rosterStudents;</span>
   }
 
   @Operation(summary = &quot;Update a roster student&quot;)
@@ -283,39 +284,39 @@ import org.springframework.web.server.ResponseStatusException;
       @Parameter(name = &quot;section&quot;) @RequestParam(required = false) String section)
       throws EntityNotFoundException {
 
-<span class="fc bfc" id="L286" title="All 6 branches covered.">    if (firstName == null</span>
+<span class="fc bfc" id="L287" title="All 6 branches covered.">    if (firstName == null</span>
         || lastName == null
         || studentId == null
-<span class="fc bfc" id="L289" title="All 2 branches covered.">        || firstName.trim().isEmpty()</span>
-<span class="fc bfc" id="L290" title="All 2 branches covered.">        || lastName.trim().isEmpty()</span>
-<span class="fc bfc" id="L291" title="All 2 branches covered.">        || studentId.trim().isEmpty()) {</span>
-<span class="fc" id="L292">      throw new ResponseStatusException(HttpStatus.BAD_REQUEST, &quot;Required fields cannot be empty&quot;);</span>
+<span class="fc bfc" id="L290" title="All 2 branches covered.">        || firstName.trim().isEmpty()</span>
+<span class="fc bfc" id="L291" title="All 2 branches covered.">        || lastName.trim().isEmpty()</span>
+<span class="fc bfc" id="L292" title="All 2 branches covered.">        || studentId.trim().isEmpty()) {</span>
+<span class="fc" id="L293">      throw new ResponseStatusException(HttpStatus.BAD_REQUEST, &quot;Required fields cannot be empty&quot;);</span>
     }
 
-<span class="fc" id="L295">    RosterStudent rosterStudent =</span>
+<span class="fc" id="L296">    RosterStudent rosterStudent =</span>
         rosterStudentRepository
-<span class="fc" id="L297">            .findById(id)</span>
-<span class="fc" id="L298">            .orElseThrow(() -&gt; new EntityNotFoundException(RosterStudent.class, id));</span>
+<span class="fc" id="L298">            .findById(id)</span>
+<span class="fc" id="L299">            .orElseThrow(() -&gt; new EntityNotFoundException(RosterStudent.class, id));</span>
 
-<span class="fc bfc" id="L300" title="All 2 branches covered.">    if (!rosterStudent.getStudentId().trim().equals(studentId.trim())) {</span>
-<span class="fc" id="L301">      Optional&lt;RosterStudent&gt; existingStudent =</span>
-<span class="fc" id="L302">          rosterStudentRepository.findByCourseIdAndStudentId(</span>
-<span class="fc" id="L303">              rosterStudent.getCourse().getId(), studentId.trim());</span>
-<span class="fc bfc" id="L304" title="All 2 branches covered.">      if (existingStudent.isPresent()) {</span>
-<span class="fc" id="L305">        throw new ResponseStatusException(</span>
+<span class="fc bfc" id="L301" title="All 2 branches covered.">    if (!rosterStudent.getStudentId().trim().equals(studentId.trim())) {</span>
+<span class="fc" id="L302">      Optional&lt;RosterStudent&gt; existingStudent =</span>
+<span class="fc" id="L303">          rosterStudentRepository.findByCourseIdAndStudentId(</span>
+<span class="fc" id="L304">              rosterStudent.getCourse().getId(), studentId.trim());</span>
+<span class="fc bfc" id="L305" title="All 2 branches covered.">      if (existingStudent.isPresent()) {</span>
+<span class="fc" id="L306">        throw new ResponseStatusException(</span>
             HttpStatus.BAD_REQUEST, &quot;Student ID already exists in this course&quot;);
       }
     }
 
-<span class="fc" id="L310">    rosterStudent.setFirstName(firstName.trim());</span>
-<span class="fc" id="L311">    rosterStudent.setLastName(lastName.trim());</span>
-<span class="fc" id="L312">    rosterStudent.setStudentId(studentId.trim());</span>
+<span class="fc" id="L311">    rosterStudent.setFirstName(firstName.trim());</span>
+<span class="fc" id="L312">    rosterStudent.setLastName(lastName.trim());</span>
+<span class="fc" id="L313">    rosterStudent.setStudentId(studentId.trim());</span>
 
-<span class="fc bfc" id="L314" title="All 2 branches covered.">    if (section != null) {</span>
-<span class="fc" id="L315">      rosterStudent.setSection(section);</span>
+<span class="fc bfc" id="L315" title="All 2 branches covered.">    if (section != null) {</span>
+<span class="fc" id="L316">      rosterStudent.setSection(section);</span>
     }
 
-<span class="fc" id="L318">    return rosterStudentRepository.save(rosterStudent);</span>
+<span class="fc" id="L319">    return rosterStudentRepository.save(rosterStudent);</span>
   }
 
   @Operation(
@@ -325,12 +326,12 @@ import org.springframework.web.server.ResponseStatusException;
   @PutMapping(&quot;/restore&quot;)
   public RosterStudent restoreRosterStudent(@Parameter(name = &quot;id&quot;) @RequestParam Long id)
       throws EntityNotFoundException {
-<span class="fc" id="L328">    RosterStudent rosterStudent =</span>
+<span class="fc" id="L329">    RosterStudent rosterStudent =</span>
         rosterStudentRepository
-<span class="fc" id="L330">            .findById(id)</span>
-<span class="fc" id="L331">            .orElseThrow(() -&gt; new EntityNotFoundException(RosterStudent.class, id));</span>
-<span class="fc" id="L332">    rosterStudent.setRosterStatus(RosterStatus.MANUAL);</span>
-<span class="fc" id="L333">    return rosterStudentRepository.save(rosterStudent);</span>
+<span class="fc" id="L331">            .findById(id)</span>
+<span class="fc" id="L332">            .orElseThrow(() -&gt; new EntityNotFoundException(RosterStudent.class, id));</span>
+<span class="fc" id="L333">    rosterStudent.setRosterStatus(RosterStatus.MANUAL);</span>
+<span class="fc" id="L334">    return rosterStudentRepository.save(rosterStudent);</span>
   }
 
   @Operation(summary = &quot;Delete a roster student&quot;)
@@ -345,55 +346,55 @@ import org.springframework.web.server.ResponseStatusException;
           @RequestParam(defaultValue = &quot;true&quot;)
           boolean removeFromOrg)
       throws EntityNotFoundException {
-<span class="fc" id="L348">    RosterStudent rosterStudent =</span>
+<span class="fc" id="L349">    RosterStudent rosterStudent =</span>
         rosterStudentRepository
-<span class="fc" id="L350">            .findById(id)</span>
-<span class="fc" id="L351">            .orElseThrow(() -&gt; new EntityNotFoundException(RosterStudent.class, id));</span>
-<span class="fc" id="L352">    Course course = rosterStudent.getCourse();</span>
+<span class="fc" id="L351">            .findById(id)</span>
+<span class="fc" id="L352">            .orElseThrow(() -&gt; new EntityNotFoundException(RosterStudent.class, id));</span>
+<span class="fc" id="L353">    Course course = rosterStudent.getCourse();</span>
 
-<span class="fc" id="L354">    boolean orgRemovalAttempted = false;</span>
-<span class="fc" id="L355">    boolean orgRemovalSuccessful = false;</span>
-<span class="fc" id="L356">    String orgRemovalErrorMessage = null;</span>
+<span class="fc" id="L355">    boolean orgRemovalAttempted = false;</span>
+<span class="fc" id="L356">    boolean orgRemovalSuccessful = false;</span>
+<span class="fc" id="L357">    String orgRemovalErrorMessage = null;</span>
 
     // Try to remove the student from the organization if they have a GitHub login
     // and removeFromOrg parameter is true
-<span class="fc bfc" id="L360" title="All 2 branches covered.">    if (removeFromOrg</span>
-<span class="fc bfc" id="L361" title="All 2 branches covered.">        &amp;&amp; rosterStudent.getGithubLogin() != null</span>
-<span class="fc bfc" id="L362" title="All 2 branches covered.">        &amp;&amp; course.getOrgName() != null</span>
-<span class="fc bfc" id="L363" title="All 2 branches covered.">        &amp;&amp; course.getInstallationId() != null) {</span>
-<span class="fc" id="L364">      orgRemovalAttempted = true;</span>
+<span class="fc bfc" id="L361" title="All 2 branches covered.">    if (removeFromOrg</span>
+<span class="fc bfc" id="L362" title="All 2 branches covered.">        &amp;&amp; rosterStudent.getGithubLogin() != null</span>
+<span class="fc bfc" id="L363" title="All 2 branches covered.">        &amp;&amp; course.getOrgName() != null</span>
+<span class="fc bfc" id="L364" title="All 2 branches covered.">        &amp;&amp; course.getInstallationId() != null) {</span>
+<span class="fc" id="L365">      orgRemovalAttempted = true;</span>
       try {
-<span class="fc" id="L366">        organizationMemberService.removeOrganizationMember(rosterStudent);</span>
-<span class="fc" id="L367">        orgRemovalSuccessful = true;</span>
-<span class="fc" id="L368">      } catch (Exception e) {</span>
-<span class="fc" id="L369">        log.error(&quot;Error removing student from organization: {}&quot;, e.getMessage());</span>
-<span class="fc" id="L370">        orgRemovalErrorMessage = e.getMessage();</span>
+<span class="fc" id="L367">        organizationMemberService.removeOrganizationMember(rosterStudent);</span>
+<span class="fc" id="L368">        orgRemovalSuccessful = true;</span>
+<span class="fc" id="L369">      } catch (Exception e) {</span>
+<span class="fc" id="L370">        log.error(&quot;Error removing student from organization: {}&quot;, e.getMessage());</span>
+<span class="fc" id="L371">        orgRemovalErrorMessage = e.getMessage();</span>
         // Continue with deletion even if organization removal fails
-<span class="fc" id="L372">      }</span>
+<span class="fc" id="L373">      }</span>
     }
 
-<span class="fc bfc" id="L375" title="All 2 branches covered.">    if (!rosterStudent.getTeamMembers().isEmpty()) {</span>
-<span class="fc" id="L376">      rosterStudent</span>
-<span class="fc" id="L377">          .getTeamMembers()</span>
-<span class="fc" id="L378">          .forEach(</span>
+<span class="fc bfc" id="L376" title="All 2 branches covered.">    if (!rosterStudent.getTeamMembers().isEmpty()) {</span>
+<span class="fc" id="L377">      rosterStudent</span>
+<span class="fc" id="L378">          .getTeamMembers()</span>
+<span class="fc" id="L379">          .forEach(</span>
               teamMember -&gt; {
-<span class="fc" id="L380">                teamMember.getTeam().getTeamMembers().remove(teamMember);</span>
-<span class="fc" id="L381">                teamMember.setTeam(null);</span>
-<span class="fc" id="L382">              });</span>
+<span class="fc" id="L381">                teamMember.getTeam().getTeamMembers().remove(teamMember);</span>
+<span class="fc" id="L382">                teamMember.setTeam(null);</span>
+<span class="fc" id="L383">              });</span>
     }
 
-<span class="fc" id="L385">    rosterStudent.getCourse().getRosterStudents().remove(rosterStudent);</span>
-<span class="fc" id="L386">    rosterStudent.setCourse(null);</span>
-<span class="fc" id="L387">    rosterStudentRepository.delete(rosterStudent);</span>
+<span class="fc" id="L386">    rosterStudent.getCourse().getRosterStudents().remove(rosterStudent);</span>
+<span class="fc" id="L387">    rosterStudent.setCourse(null);</span>
+<span class="fc" id="L388">    rosterStudentRepository.delete(rosterStudent);</span>
 
-<span class="fc bfc" id="L389" title="All 2 branches covered.">    if (!orgRemovalAttempted) {</span>
-<span class="fc" id="L390">      return ResponseEntity.ok(</span>
+<span class="fc bfc" id="L390" title="All 2 branches covered.">    if (!orgRemovalAttempted) {</span>
+<span class="fc" id="L391">      return ResponseEntity.ok(</span>
           &quot;Successfully deleted roster student and removed him/her from the course list&quot;);
-<span class="fc bfc" id="L392" title="All 2 branches covered.">    } else if (orgRemovalSuccessful) {</span>
-<span class="fc" id="L393">      return ResponseEntity.ok(</span>
+<span class="fc bfc" id="L393" title="All 2 branches covered.">    } else if (orgRemovalSuccessful) {</span>
+<span class="fc" id="L394">      return ResponseEntity.ok(</span>
           &quot;Successfully deleted roster student and removed him/her from the course list and organization&quot;);
     } else {
-<span class="fc" id="L396">      return ResponseEntity.ok(</span>
+<span class="fc" id="L397">      return ResponseEntity.ok(</span>
           &quot;Successfully deleted roster student but there was an error removing them from the course organization: &quot;
               + orgRemovalErrorMessage);
     }
