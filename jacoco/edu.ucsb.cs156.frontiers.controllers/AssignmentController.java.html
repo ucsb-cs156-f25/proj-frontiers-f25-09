@@ -54,5 +54,37 @@ import org.springframework.web.bind.annotation.*;
 <span class="fc" id="L54">    Assignment savedAssignment = assignmentRepository.save(assignment);</span>
 <span class="fc" id="L55">    return savedAssignment;</span>
   }
+
+  /** Edit an assignment */
+  @Operation(summary = &quot;Edit an assignment&quot;)
+  @PreAuthorize(&quot;@CourseSecurity.hasManagePermissions(#root, #courseId)&quot;)
+  @PutMapping(&quot;/{id}&quot;)
+  public Assignment putAssignment(
+      @Parameter(name = &quot;id&quot;) @PathVariable Long id,
+      @Parameter(name = &quot;courseId&quot;) @RequestParam Long courseId,
+      @Parameter(name = &quot;asn_type&quot;) @RequestParam String asn_type,
+      @Parameter(name = &quot;visibility&quot;) @RequestParam String visibility,
+      @Parameter(name = &quot;permission&quot;) @RequestParam String permission) {
+
+    // Validate that the course exists
+<span class="fc" id="L70">    courseRepository</span>
+<span class="fc" id="L71">        .findById(courseId)</span>
+<span class="fc" id="L72">        .orElseThrow(() -&gt; new EntityNotFoundException(Course.class, courseId));</span>
+
+    // Find the Assignment object
+<span class="fc" id="L75">    Assignment assignment =</span>
+        assignmentRepository
+<span class="fc" id="L77">            .findById(id)</span>
+<span class="fc" id="L78">            .orElseThrow(() -&gt; new EntityNotFoundException(Assignment.class, id));</span>
+
+    // Update Assignment object
+<span class="fc" id="L81">    assignment.setAsn_type(asn_type);</span>
+<span class="fc" id="L82">    assignment.setVisibility(visibility);</span>
+<span class="fc" id="L83">    assignment.setPermission(permission);</span>
+
+    // Save and return
+<span class="fc" id="L86">    Assignment savedAssignment = assignmentRepository.save(assignment);</span>
+<span class="fc" id="L87">    return savedAssignment;</span>
+  }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>
