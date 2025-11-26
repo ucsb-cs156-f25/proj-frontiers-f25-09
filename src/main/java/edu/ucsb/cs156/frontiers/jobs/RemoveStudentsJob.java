@@ -8,12 +8,10 @@ import edu.ucsb.cs156.frontiers.services.jobs.JobContext;
 import edu.ucsb.cs156.frontiers.services.jobs.JobContextConsumer;
 import java.util.List;
 import lombok.Builder;
-import lombok.EqualsAndHashCode;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.client.HttpStatusCodeException;
 
 @Builder
-@EqualsAndHashCode
 public class RemoveStudentsJob implements JobContextConsumer {
   private OrganizationMemberService organizationMemberService;
   private List<RosterStudent> students;
