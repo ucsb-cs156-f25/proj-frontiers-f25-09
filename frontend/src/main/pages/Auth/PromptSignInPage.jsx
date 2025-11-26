@@ -8,7 +8,6 @@ import { Row, Alert } from "react-bootstrap";
 import BasicLayout from "main/layouts/BasicLayout/BasicLayout";
 import SignInContent from "main/pages/Auth/SignInContent.jsx";
 
-
 export default function PromptSignInPage() {
   const location = useLocation();
 
