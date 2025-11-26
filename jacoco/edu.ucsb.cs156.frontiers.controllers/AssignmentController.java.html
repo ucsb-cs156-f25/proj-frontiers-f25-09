@@ -86,5 +86,30 @@ import org.springframework.web.bind.annotation.*;
 <span class="fc" id="L86">    Assignment savedAssignment = assignmentRepository.save(assignment);</span>
 <span class="fc" id="L87">    return savedAssignment;</span>
   }
+
+  /** Delete an an assignment */
+  @Operation(summary = &quot;Delete an assignment&quot;)
+  @PreAuthorize(&quot;@CourseSecurity.hasManagePermissions(#root, #courseId)&quot;)
+  @DeleteMapping(&quot;/{id}&quot;)
+  public Object deleteAssignment(
+      @Parameter(name = &quot;id&quot;) @PathVariable Long id,
+      @Parameter(name = &quot;courseId&quot;) @RequestParam Long courseId) {
+
+    // Validate that the course exists
+<span class="fc" id="L99">    courseRepository</span>
+<span class="fc" id="L100">        .findById(courseId)</span>
+<span class="fc" id="L101">        .orElseThrow(() -&gt; new EntityNotFoundException(Course.class, courseId));</span>
+
+    // Find the Assignment object
+<span class="fc" id="L104">    Assignment assignment =</span>
+        assignmentRepository
+<span class="fc" id="L106">            .findById(id)</span>
+<span class="fc" id="L107">            .orElseThrow(() -&gt; new EntityNotFoundException(Assignment.class, id));</span>
+
+    // Delete the assignment
+<span class="fc" id="L110">    assignmentRepository.delete(assignment);</span>
+
+<span class="fc" id="L112">    return genericMessage(String.format(&quot;Assignment with id %s deleted&quot;, id));</span>
+  }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>
